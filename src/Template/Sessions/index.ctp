@@ -3,10 +3,13 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Session[]|\Cake\Collection\CollectionInterface $sessions
  */
+
+    // echo $this->element('navbar');
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('Dashboard'), ['controller'=>'Logins','action' => 'dashboard']) ?></li>
         <li><?= $this->Html->link(__('Book a Session'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
@@ -17,7 +20,6 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('session_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('session_datetime') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -26,7 +28,7 @@
             <tr>
                 <td><?= $this->Number->format($session->session_id) ?></td>
                 <td><?= h($session->session_datetime) ?></td>
-                <td><?= $session->has('user') ? $this->Html->link($session->user->user_id, ['controller' => 'Users', 'action' => 'view', $session->user->user_id]) : '' ?></td>
+               <!--  <td><?= $session->has('user') ? $this->Html->link($session->user->user_id, ['controller' => 'Users', 'action' => 'view', $session->user->user_id]) : '' ?></td> -->
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $session->session_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $session->session_id]) ?>

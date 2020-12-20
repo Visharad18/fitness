@@ -99,6 +99,10 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/dashboard',['controller' => 'Logins', 'action' => 'dashboard']);
     $routes->connect('/logout',['controller' => 'Logins', 'action' => 'logout']);
     $routes->connect('/edit',['controller' => 'Logins', 'action' => 'edit']);
+    $routes->connect('/contact',['controller' => 'Logins', 'action' => 'contact']);
+    $routes->connect('/password/*',['controller' => 'Logins', 'action' => 'password']);
+    $routes->connect('/recipes',['controller' => 'Logins', 'action' => 'recipes']);
+    $routes->connect('/seller/*',['controller' => 'Logins', 'action' => 'seller']);
     $routes->fallbacks(DashedRoute::class);
 });
 

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 	<!-- Title -->
-	<title>Outrun</title>
+	<title>Sculpex</title>
 	
 	<!-- CSS -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
@@ -64,7 +64,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand">Outrun</a>
+					<a class="navbar-brand">Sculpex</a>
 				</div>
 				<div class="navbar-collapse collapse" id="navbar" >
 					<ul class="nav navbar-nav" id="menu">
@@ -72,12 +72,33 @@
 						<li><a href="#features">Features</a></li>
 						<li><a href="#join">Join</a></li>
 						<li><a href="#contact">Contact</a></li>
+						<li><a onclick="show()">Calculate BMI</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a id="dialog" href="#login">Login</a></li>
 					</ul>
 				</div>
 			</div>
+
+			<div>
+		<form id="bmi-form" style="display: none; width: 300px">
+		
+		<p>
+			<label style="margin: 0">HEIGHT   </label>
+			<input type="number" name="feet" id="feet" min="0" value="5"  style="max-width: 20%; margin: 0;" required> <label style="margin: 0"> feet  </label>
+			<input type="number" name="inch" id="inches" min="0" value="6" style="max-width: 20% margin: 0;" required> <label style="margin: 0"> inches</label>
+		</p>
+		<p>
+			<label>WEIGHT</label>
+			<input type="number" name="kg" id="weight" min="0" max="150" step="0.01" value="60" required>
+			<label> Kg</label>
+		</p>
+		<p>
+			<button style="width: 100%" onclick="calcBMI(); return false;">Calculate BMI</button>
+		</p>
+		<label style="left: 40%">BMI: </label><label id="bmi">21.35</label>
+	</form></div>
+
 		</nav>
 	</header>
 	
@@ -108,8 +129,8 @@
 		<section id="welcome">
 			<div class="container">
 				<h2>Welcome</h2>
-				<p>Welcome to Outrun, the best way to track your exercise
-				and compete with your friends. With Outrun, you'll be 
+				<p>Welcome to Sculpex, the best way to track your exercise
+				and compete with your friends. With Sculpex, you'll be 
 				given the ability to record your workout time and compare
 				those with your friends. Challenge yourself and those 
 				around you to get fit, in a fun and interactive way.</p>
@@ -121,7 +142,7 @@
 		<section id="features">
 			<div class="container">
 				<h2>Features</h2>
-				<p>When you sign up for a Outrun account, you'll be given access to all of these features.
+				<p>When you sign up for a Sculpex account, you'll be given access to all of these features.
 				<ul>
 					<li>Personalize dashboard</li>
 					<li>Track your workout times</li>
@@ -137,7 +158,7 @@
 		<section id="join">
 			<div class="container">
 				<h2>Join now!</h2>
-				<p>Joining Outrun is, and will always be, <strong>100% FREE!</strong>
+				<p>Joining Sculpex is, and will always be, <strong>100% FREE!</strong>
 				What are you waiting for? Join now and get fit by competing.</p>
 				
 				<!-- Register form -->
@@ -172,27 +193,25 @@
 		<section id="contact">
 			<div class="container">
 				<h2>Contact</h2>
-				<p>Got any questions? Having some problems signing up? Email us at <a href="mailto:support@Outrun.com">support@Outrun.com</a> for help.</p>
+				<p>Got any questions? Having some problems signing up? Email us at <a href="mailto:support@Sculpex.com">support@Sculpex.com</a> for help.</p>
 				
 				<!-- Dummy email form -->
-				<?php 
-				echo $this->Form->create($query,['url' => [
-						'controller' => 'Logins',
-						'action' => 'contact',
-						'type' => 'post',
+				<?php
+					echo $this->Form->create($user,[
+						'url' => [
+							'controller' => 'Logins',
+							'action' => 'contact'
+						],
+						'type' => 'POST',
 						'id' => 'contact-form',
-						'class' => 'container'
-						]
-					]
-				);
+					]);
 			
-				
-				echo $this->Form->control("questioner_name",["label" => "Name","class"=>"field", "maxlength"=>"40" ,"required"]);
-				echo $this->Form->control("email",["type"=>"email","class"=>"field", "maxlength"=>"50" ,"required"]);
-				echo $this->Form->control("question",["label" => "Message" ,"placeholder"=>"Write your message here", "class"=>"field","minlength"=>"20", "maxlength"=>"300" ,"required"]);
-				echo $this->Form->Button("Send Message",["type"=>"submit", "class"=>"button button-block"]);
-				echo $this->Form->end(); 
-			?>
+					echo '<div class="field">'.$this->Form->control('questioner_name',['label'=>'Name', 'maxlength' => 40, 'required']).'</div><div class="field">';
+					echo '<div class="field">'.$this->Form->control('email',['maxlength' => 50, 'required']).'</div><div class="field">';
+					echo $this->Form->control('question',['type' => 'text', 'label' => 'Message', 'maxlength' => 300, 'placeholder' => 'Write your message here', 'required']);
+					echo $this->Form->button('Send Message',['type'=>"submit", 'class'=>"button button-block"]);
+					echo $this->Form->end();
+				?>
 			</div>
 		</section>
 		
@@ -201,12 +220,31 @@
 	
 	<footer>
 		<div class="container">
-			<!--Outrun &copy; 2015 released under <a href="https://github.com/pixelcog/parallax.js/blob/master/LICENSE">MIT license</a><br /> </li-->
+			<!--Sculpex &copy; 2015 released under <a href="https://github.com/pixelcog/parallax.js/blob/master/LICENSE">MIT license</a><br /> </li-->
 			<a href="http://www.facebook.com" target="_blank"><img src="img/facebook.png" width="32px" height="32px" /></a>
 			<a href="http://www.twitter.com" target="_blank"><img src="img/twitter.png" width="32px" height="32px" /></a>
 			<a href="http://www.instagram.com" target="_blank"><img src="img/instagram.png" width="32px" height="32px" /></a>
 			<a href="http://www.youtube.com" target="_blank"><img src="img/youtube.png" width="32px" height="32px" /></a>
 		</div>
 	</footer>
+	<script type="text/javascript">
+		function calcBMI() {
+			var ft = parseInt(document.getElementById("feet").value);
+			var inch = parseInt(document.getElementById("inches").value);
+			var weight = parseInt(document.getElementById("weight").value);
+			var bmi = (ft*12+inch)*2.54/100;
+			bmi *= bmi;
+			bmi = weight/bmi;
+			document.getElementById("bmi").innerHTML = bmi.toFixed(2);
+		}
+
+		function show() {
+			var f = document.getElementById("bmi-form");
+			if(f.style.display == "none")
+				f.style.display = "block";
+			else
+				f.style.display = "none";
+		}
+	</script>
 </body>
 </html>

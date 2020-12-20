@@ -44,22 +44,19 @@ class QueriesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('qid')
-            ->allowEmptyString('qid', null, 'create');
+            ->integer('qid');
 
         $validator
             ->email('email')
-            ->allowEmptyString('email');
+            ->maxLength('email','50');
 
         $validator
             ->scalar('questioner_name')
-            ->maxLength('questioner_name', 40)
-            ->allowEmptyString('questioner_name');
+            ->maxLength('questioner_name', 40);
 
         $validator
             ->scalar('question')
-            ->maxLength('question', 300)
-            ->allowEmptyString('question');
+            ->maxLength('question', 300);
 
         return $validator;
     }

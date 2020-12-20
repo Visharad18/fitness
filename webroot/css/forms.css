@@ -21,9 +21,9 @@ form {
 .field label {
 	position: absolute;
 	color: darkgray;
-	font-size: 16px;
+	font-size: 10px;
 	font-weight: 300;
-	margin: 10px 12px;
+	margin: 4px 6px;
 	pointer-events: none;
 }
 .field label span { margin-left: 2px; color: #ff0000; }

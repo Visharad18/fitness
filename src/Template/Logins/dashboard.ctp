@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 	<!-- Title -->
-	<title>Outrun</title>
+	<title>Sculpex</title>
 	
 	<!-- CSS -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
@@ -142,16 +142,22 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand">Outrun</a>
+					<a class="navbar-brand">Sculpex</a>
 				</div>
 				<div class="navbar-collapse collapse" id="navbar" >
 					<ul class="nav navbar-nav" id="menu">
 						<li><a href="/edit">Edit Profile</a></li>
 						<li><a href="/sessions/add">Book a Session</a></li>
 						<li><a href="/sessions/">My Sessions</a></li>
+						<li><a href="/recipes/">Recipes</a></li>
+						<li><a href="/products/">Products</a></li>
+						<li><?php if($user_type == 'admin')
+								echo $this->Hmtl->link('Users',['url'=>'/users']); ?>
+						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><?php echo $this->Html->link('Logout' , ['controller' => 'Logins', 'action' => 'logout', '_full' => true]); ?> Logout</li>
+						<li style="padding-top: 10px;"><?= $this->Html->image('uploads/users/'.$image,['height'=>'80px','width'=>'65px','alt'=>'Profile Picture'])?></li>
+						<li><?php echo $this->Html->link('Logout' , ['controller' => 'Logins', 'action' => 'logout', '_full' => true]); ?></li>
 					</ul>
 				</div>
 			</div>
@@ -216,14 +222,14 @@
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/UyTR2EjTAXU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/Y346900i9qE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<br>
-				<iframe width="48%" height="300" src="https://www.youtube.com/embed/puLJaNv9m18" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				<iframe width="48%" height="300" src="https://www.youtube.com/embed/uNILu4KSHQM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="49.5%" height="300" src="https://www.youtube.com/embed/puLJaNv9m18" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="49.5%" height="300" src="https://www.youtube.com/embed/uNILu4KSHQM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			<div class="video" id="butt"> BUTT <br>
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/cIuiQyfKBTg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/el1Cpk5B6OU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				<iframe width="33%" height="200" src="https://www.youtube.com/embed/j0rgbfeRFVA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><iframe width="48%" height="300" src="https://www.youtube.com/embed/9SuTAxJGQuY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				<iframe width="48%" height="300" src="https://www.youtube.com/embed/36aBAcVc7Es" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="33%" height="200" src="https://www.youtube.com/embed/j0rgbfeRFVA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><iframe width="49.5%" height="300" src="https://www.youtube.com/embed/9SuTAxJGQuY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="49.5%" height="300" src="https://www.youtube.com/embed/36aBAcVc7Es" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			<div class="video" id="upper"> UPPER BODY <br>
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/Y346900i9qE?list=PLSCcAGyv98icWAjrUD29TYLhJtRAGABp2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -235,16 +241,16 @@
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/Smim7-qG8Ls" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/yU5uWAMed7k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<br>
-				<iframe width="48%" height="300" src="https://www.youtube.com/embed/3Vti3KctPe4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				<iframe width="48%" height="300" src="https://www.youtube.com/embed/mO7jBtyl9XE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="49.5%" height="300" src="https://www.youtube.com/embed/3Vti3KctPe4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="49.5%" height="300" src="https://www.youtube.com/embed/mO7jBtyl9XE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			<div class="video" id="full"> FULL BODY <br>
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/ph1NjaXvOvg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/aE4j3KR5m54" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<iframe width="33%" height="200" src="https://www.youtube.com/embed/Y2eOW7XYWxc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<br>
-				<iframe width="48%" height="300" src="https://www.youtube.com/embed/-YpRYNREDV8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				<iframe width="48%" height="300" src="https://www.youtube.com/embed/UBMk30rjy0o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="49.5%" height="300" src="https://www.youtube.com/embed/-YpRYNREDV8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="49.5%" height="300" src="https://www.youtube.com/embed/UBMk30rjy0o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 		</div>
 		
@@ -259,7 +265,7 @@
 	
 	<footer>
 		<div class="container">
-			<!-- Outrun &copy; 2015 released under <a href="https://github.com/pixelcog/parallax.js/blob/master/LICENSE">MIT license</a><br /> -->
+			<!-- Sculpex &copy; 2015 released under <a href="https://github.com/pixelcog/parallax.js/blob/master/LICENSE">MIT license</a><br /> -->
 			<a href="http://www.facebook.com" target="_blank"><img src="/img/facebook.png" width="32px" height="32px" /></a>
 			<a href="http://www.twitter.com" target="_blank"><img src="/img/twitter.png" width="32px" height="32px" /></a>
 			<a href="http://www.instagram.com" target="_blank"><img src="/img/instagram.png" width="32px" height="32px" /></a>

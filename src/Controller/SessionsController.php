@@ -2,6 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Database\Connection;
+use Cake\Datasource\ConnectionManager;
+
 
 /**
  * Sessions Controller
@@ -13,15 +16,34 @@ use App\Controller\AppController;
 class SessionsController extends AppController
 {
 
-    private $user_id;
+    private $user, $user_id, $conn;
 
     public function initialize()
     {
         parent::initialize();
-        $user  = $this->Auth->user();
-        debug($user);
-        $this->user_id = $user['user_id'];
+        $this->user  = $this->Auth->User();
+        debug($this->user);
+        $this->user_id = $this->user['user_id'];
         debug($this->user_id);
+        $this->conn = ConnectionManager::get('default');
+        // $this->Auth->config([
+        //     'authError' => 'Please login first to view this page'
+        // ]);
+    }
+
+
+    public function isAuthorized($user)
+    {
+        $action = $this->request->getParam('action');
+        // $this->Flash->success($action);
+        if(in_array($action, ['index','add']))
+            return true;
+        $slug = $this->request->getParam('pass.0');
+        if(!$slug)
+            return false;
+        $session = $this->Sessions->get($slug);
+        return $session->user_id == $this->user_id;
+        return false;
     }
 
     /**
@@ -31,12 +53,15 @@ class SessionsController extends AppController
      */
     public function index()
     {
+        $this->set('user',$this->Auth->User());
         $this->paginate = [
             'contain' => ['Users'],
         ];
-        $sessions = $this->paginate($this->Sessions);
-
-        $this->set(compact('sessions'));
+        debug($this->user_id);
+        debug($this->Sessions);
+        $sessions = $this->Sessions->findByUser_id($this->user_id);
+        debug($sessions);
+        $this->set('sessions',$this->paginate($sessions));
     }
 
     /**

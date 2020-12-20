@@ -42,6 +42,33 @@ class AppController extends Controller
         parent::initialize();
 
         $this->loadComponent('Auth');
+        $this->Auth->config([
+            'authorize' => 'Controller',
+            'unauthorizedRedirect' => $this->referer(),
+            'authError' => 'You aren\'t authorized to view this page',
+            'authenticate' => [
+                'Form' => [
+                    'userModel' => 'Users',
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'pass_word'
+                    ]
+                ]
+            ],
+            'loginAction' => [
+                'controller' => 'Logins',
+                'action' => 'index',
+            ],
+            'loginRedirect' => [
+                'controller' => 'Logins',
+                'action' => 'dashboard'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Logins',
+                'action' => 'index'
+            ],
+            'storage' => 'Session'
+        ]);
 
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
@@ -52,6 +79,11 @@ class AppController extends Controller
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
-        //$this->loadComponent('Security');
+        $this->loadComponent('Security');
     }
+
+    public function isAuthorized($user) {
+        return false;
+    }
+
 }

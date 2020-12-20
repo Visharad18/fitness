@@ -12,6 +12,16 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
+    public function isAuthorized($user)
+    {
+        return $this->Auth->User('user_type') == 'admin';
+    }
     /**
      * Index method
      *

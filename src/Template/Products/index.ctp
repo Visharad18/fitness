@@ -7,7 +7,9 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Product'), ['action' => 'add']) ?></li>
+        <li><?php if($user_type) echo $this->Html->link(__('Dashboard'), ['controller'=>'Logins','action' => 'dashboard']); ?></li>
+        <li><?php if($user_type == 'admin' || $user_type == 'seller')
+            echo $this->Html->link(__('Add a New Product'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="products index large-9 medium-8 columns content">
@@ -15,9 +17,10 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+                <th></th>
                 <th scope="col"><?= $this->Paginator->sort('pid') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('pname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('seller') ?></th>
+                <!-- <th scope="col"><?= $this->Paginator->sort('seller') ?></th> -->
                 <th scope="col"><?= $this->Paginator->sort('price') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('first_available') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -26,15 +29,21 @@
         <tbody>
             <?php foreach ($products as $product): ?>
             <tr>
+                <td><?php if($product['image'])
+                     echo $this->Html->image('uploads/products/'.$product['image'],['height'=>'150px','width'=>'120px','alt'=>'Image of '.$product->pname]);
+                    ?>
+                </td>
                 <td><?= $this->Number->format($product->pid) ?></td>
                 <td><?= h($product->pname) ?></td>
-                <td><?= h($product->seller) ?></td>
                 <td><?= $this->Number->format($product->price) ?></td>
                 <td><?= h($product->first_available) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $product->pid]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->pid]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->pid], ['confirm' => __('Are you sure you want to delete # {0}?', $product->pid)]) ?>
+                    <?php if($user_type == 'admin' || $user_type == 'seller')  {
+                        echo $this->Html->link(__('Edit '), ['action' => 'edit', $product->pid]);
+                        echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->pid], ['confirm' => __('Are you sure you want to delete # {0}?', $product->pid." ".$product->pname)]);
+                    }
+                    ?>
                 </td>
             </tr>
             <?php endforeach; ?>
