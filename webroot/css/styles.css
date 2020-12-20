@@ -1,0 +1,120 @@
+html, body { overfloy-x: hidden; }
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.clearfix { clear: both; }
+.hidden { display: none; }
+
+/* Parallax styles */
+.parallax-container {
+  height: 350px;
+  width: 100%;
+}
+
+/* Section styling */
+section {
+  padding: 25px 0 35px;
+	background: #ffffff;
+}
+
+#login {
+  width: 600px;
+  padding: 30px;
+  display: none;
+  background: #FFF;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
+}
+#login h1 { text-align: center; }
+
+@media screen and (max-width: 450px) {
+  #login  { width: 500px; }
+}
+
+/* Footer styles */
+footer {
+  background: #000;
+  color: #ddd;
+  padding: 30px 0 30px;
+  text-align: center;
+}
+
+footer a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #eee;
+  text-decoration: underline;
+}
+
+footer img {
+	margin: 10px;
+}
+
+.video {
+	display: none;
+}
+
+.video-btn {
+	position: relative;
+	top: 40%;
+}
+
+.body-parts {
+	position: relative;
+	left: 30%;
+}
+.full-btn {
+  position: absolute;
+  top: 7%;
+  left: 48%;
+}
+
+.abs-btn {
+  position: absolute;
+  top: 61%;
+  left: 57.5%;
+}
+
+.upper-btn {
+  position: absolute;
+  top: 35%;
+  left: 38%;
+}
+
+.legs-btn {
+  position: absolute;
+  top: 84%;
+  left: 59.3%;
+}
+
+.arms-btn {
+  position: absolute;
+  top: 35%;
+  left: 59.5%;
+  padding: 15px 50px;
+}
+
+.butt-btn {
+  position: absolute;
+  top: 68%;
+  left: 36%;
+}
+
+.full-btn, .legs-btn, .abs-btn, .upper-btn, .arms-btn, .butt-btn {
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);  
+  color: white;
+  font-size: 16px;
+  padding: 15px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}

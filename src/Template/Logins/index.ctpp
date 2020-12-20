@@ -1,0 +1,38 @@
+<?php 
+
+use App\Model\Entity\User;
+
+	$user = new User();
+	echo $this->element('navbar');
+	echo $this->Form->create($user,['url' => [
+			'action' => 'register',
+			'type' => 'post',
+			'id' => 'register-form',
+			'class' => 'container'
+			]
+		]
+	);
+	echo $this->Form->control('firstname');
+	echo $this->Form->control('lastname');
+	echo $this->Form->control('email');
+	echo $this->Form->control('password');
+	echo $this->Form->button('GET STARTED');
+	echo $this->Form->end();
+
+	echo $this->Form->create($user,['url' => [
+			'action' => 'dashboard',
+			'type' => 'post',
+			'id' => 'login-form',
+			'class' => 'container'
+			]
+		]
+	);
+	echo $this->Form->control('email');
+	echo $this->Form->control('password');
+	echo $this->Form->button('Login');
+	echo $this->Form->end();
+
+
+
+
+?>
