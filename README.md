@@ -10,6 +10,6 @@ This is a fitness website made in CakePHP 3.9, an extension to CMS, with CRUD op
 ## Installation
 1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
 2. Clone this repo in your htdocs directory.
-3. Run the schema.sql file in root directory.
+3. Run the schema.sql file in root directory and change Lines 266-268 & 309-311 in config/app.php with your MySQL username & password.
 4. Modify start.bat by adding paths to your Apache, MySQL and PHP installations, save and run it.
 
